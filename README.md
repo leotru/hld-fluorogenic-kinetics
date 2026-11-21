@@ -4,6 +4,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24424426.svg)](https://doi.org/10.5281/zenodo.24424426)
 
+[![Tests](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml?query=branch%3Amain)
+[![Python](https://img.shields.io/badge/Python-3.12%20%7C%203.13%20%7C%203.14-3776AB?logo=python&logoColor=white)](https://github.com/leotru/hld-fluorogenic-kinetics/blob/main/.github/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/leotru/hld-fluorogenic-kinetics?label=release)](https://github.com/leotru/hld-fluorogenic-kinetics/releases/latest)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24424426.svg)](https://doi.org/10.5281/zenodo.24424426)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Citation](https://img.shields.io/badge/Citation-CITATION.cff-6f42c1)](CITATION.cff)
+[![ORCID](https://img.shields.io/badge/ORCID-0000--0001--9995--4135-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0000-0001-9995-4135)
+[![Reproducibility](https://img.shields.io/badge/Reproducibility-documented-4682B4)](docs/REPRODUCIBILITY.md)
+
 Code accompanying the Supporting Information section *Kinetic model, assay design
 and parameter identifiability* of:
 
