@@ -11,7 +11,7 @@ authors:
   - family-names: "Trujillo"
     given-names: "Leonardo"
     affiliation: "INSA Lyon, Université Lyon 1, CNRS UMR5240, Villeurbanne, France"
-    orcid" "https://orcid.org/0000-0001-9995-4135"
+    orcid: "https://orcid.org/0000-0001-9995-4135"
 license: MIT
 version: "1.0.0"
 keywords:
