@@ -3,8 +3,6 @@
 [![CI](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24424426.svg)](https://doi.org/10.5281/zenodo.24424426)
-
-[![Tests](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml?query=branch%3Amain)
 [![Python](https://img.shields.io/badge/Python-3.12%20%7C%203.13%20%7C%203.14-3776AB?logo=python&logoColor=white)](https://github.com/leotru/hld-fluorogenic-kinetics/blob/main/.github/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/leotru/hld-fluorogenic-kinetics?label=release)](https://github.com/leotru/hld-fluorogenic-kinetics/releases/latest)
 [![Citation](https://img.shields.io/badge/Citation-CITATION.cff-6f42c1)](CITATION.cff)
