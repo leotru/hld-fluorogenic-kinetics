@@ -1,4 +1,4 @@
-# v1.0.0 — Initial research-software release
+# v2026.11.21 — Initial research-software release
 
 Initial citable version of the computational analysis of a fluorogenic
 haloalkane dehalogenase assay, based on aggregate parameter values
