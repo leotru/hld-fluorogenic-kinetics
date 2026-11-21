@@ -61,10 +61,10 @@ non-identifiability of the rate-law parameters. The analyses here examine
 local and Monte Carlo sensitivity for the chosen designs. Neither code nor
 metadata should describe this as a general formal identifiability theorem.
 
-## Permanent archiving
+### Software release and archival
 
-A public GitHub release can be archived automatically by Zenodo. After
-Zenodo issues a real DOI, add the version-specific DOI to the metadata and
-README in a subsequent commit. Do not insert guessed DOI values into a
-released snapshot. A GitHub commit hash and a Zenodo version DOI together
-identify the executable source used for a result.
+The source code has been publicly released on GitHub as version `v2026.11.21` and permanently archived on Zenodo under the version-specific DOI [10.5281/zenodo.24424426](https://doi.org/10.5281/zenodo.24424426).
+
+The Zenodo record provides a persistent, citable snapshot of the software, while GitHub maintains its development history and subsequent updates. The DOI can be incorporated into the repository's citation metadata and README in a subsequent commit without modifying the archived release.
+
+For computational reproducibility, the Zenodo version DOI, together with the corresponding Git release tag and commit hash, identifies the exact source-code version associated with the reported numerical results. Subsequent changes to the main development branch do not affect the archived version.
