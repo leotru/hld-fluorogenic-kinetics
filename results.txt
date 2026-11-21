@@ -10,7 +10,7 @@ DphxA / COU2-Cl   Km = 6.78 uM   kcat = 16.9 /s   KSI = 7.54 uM
 --- gamma=1  (no intermediate accumulation)
     kcat=16.899 /s  Km=6.780 uM  KSI_app=7.540 uM  KSI_true=7.540 uM  Ks=5.090 uM  gamma=1.000  Km/Ks=1.332
     elementary: k1=10 km1=50.9 k2=16.9 k3=1e+06 k4=1e+06
-    invariants: enzyme 2.17e-16, substrate 2.49e-15 (relative, max over trajectory)
+    invariants: enzyme 2.17e-16, substrate 3.73e-15 (relative, max over trajectory)
 
       S0 (uM)       v_full       v_qssa   rel.err
           0.8  1.76187e-03  1.76388e-03    -0.11%
@@ -28,7 +28,7 @@ DphxA / COU2-Cl   Km = 6.78 uM   kcat = 16.9 /s   KSI = 7.54 uM
 --- gamma=3  (k2=k3=k4, intermediate accumulates)
     kcat=16.900 /s  Km=6.780 uM  KSI_app=7.540 uM  KSI_true=2.513 uM  Ks=15.270 uM  gamma=3.000  Km/Ks=0.444
     elementary: k1=10 km1=152.7 k2=50.7 k3=50.7 k4=50.7
-    invariants: enzyme 2.17e-16, substrate 2.66e-15 (relative, max over trajectory)
+    invariants: enzyme 2.17e-16, substrate 8.88e-16 (relative, max over trajectory)
 
       S0 (uM)       v_full       v_qssa   rel.err
           0.8  1.76208e-03  1.76389e-03    -0.10%
@@ -90,17 +90,18 @@ Synthetic replicates: 11 concentrations x 3 replicates, proportional noise.
      5%       9.8%     12.9%     12.2%      -0.948     0.986     -0.973
     10%      35.9%     47.5%     24.9%      -0.658     0.996     -0.675
     15%    2337.9%   2369.6%     36.7%      -0.112     1.000     -0.112
-    20%    1010.1%   1009.7%     48.0%      -0.206     0.999     -0.205
-    30%     470.9%    474.4%     76.3%      -0.276     0.993     -0.278
+    20%    1010.1%   1009.5%     48.0%      -0.206     0.999     -0.205
+    30%     470.6%    474.3%     76.3%      -0.277     0.993     -0.279
 
-The correlation structure is essentially constant across noise levels:
-it is a property of the rate law and the design, not of the data quality.
+Natural-scale correlations and CVs become unstable when fits run away;
+these moments should not be interpreted as invariant across noise levels.
+See a3_ident.py for bounded, log-parameter fits and a design comparison.
 
 Reparametrisation check at 15% noise (CV of derived quantities, 600 fits):
     Vmax/Km   (low-S arm)  CV =   11.6%
     Vmax*KSI  (high-S arm)  CV =    9.9%
     S* = sqrt(Km*KSI)  CV =    5.4%
-    Km                   CV = 2345.9%
+    Km                   CV = 2345.3%
     KSI                  CV =   37.8%
 
 ==============================================================================
@@ -126,8 +127,9 @@ Geometric CV below is exp(sd of log) - 1, comparable to a relative error.
 The published relative errors (Km 44%, KSI 43%) are reproduced at
 about 15-16% proportional noise with 11 concentrations in triplicate,
 or at lower noise if fewer concentrations were actually used.  The
-correlation r(lnKm,lnKSI) = -0.97 is unchanged across every noise
-level and every design tested: it is structural, not a data problem.
+strong negative log-parameter correlation reflects practical
+ill-conditioning in the examined designs, not a formal proof of
+structural non-identifiability. The magnitude varies with design.
 
 ==========================================================================
 REPARAMETRISATION: identifiable combinations at 10% noise

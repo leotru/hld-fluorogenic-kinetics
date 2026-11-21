@@ -102,8 +102,9 @@ for sigma in [0.02, 0.05, 0.10, 0.15, 0.20, 0.30]:
           f"{100*cv[2]:8.1f}% {C[1,2]:11.3f} {C[0,1]:9.3f} {C[0,2]:10.3f}")
 
 print("""
-The correlation structure is essentially constant across noise levels:
-it is a property of the rate law and the design, not of the data quality.
+Natural-scale correlations and CVs become unstable when fits run away;
+these moments should not be interpreted as invariant across noise levels.
+See a3_ident.py for bounded, log-parameter fits and a design comparison.
 """)
 
 # identifiable combinations, same simulations

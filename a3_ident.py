@@ -65,8 +65,9 @@ print()
 print("The published relative errors (Km 44%, KSI 43%) are reproduced at")
 print("about 15-16% proportional noise with 11 concentrations in triplicate,")
 print("or at lower noise if fewer concentrations were actually used.  The")
-print("correlation r(lnKm,lnKSI) = -0.97 is unchanged across every noise")
-print("level and every design tested: it is structural, not a data problem.")
+print("strong negative log-parameter correlation reflects practical")
+print("ill-conditioning in the examined designs, not a formal proof of")
+print("structural non-identifiability. The magnitude varies with design.")
 print()
 
 # ------------------------------------------------------------------

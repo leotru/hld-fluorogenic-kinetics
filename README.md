@@ -3,10 +3,12 @@
 Code accompanying the Supporting Information section *Kinetic model, assay design
 and parameter identifiability* of:
 
-> Mion, S., Mallet, M., Louis, Y., Fontanay, S., Ruaudel, F., Trujillo, L.,
-> Bastian, F., Jacolot, M., Popowycz, F., Oger, P. M.
-> *Coumarin-based blue excitable probe for functional screening of dehalogenase
-> activity.*
+> Mion, S. et al. *Coumarin-based blue excitable probe for functional screening
+> of dehalogenase activity.* bioRxiv preprint (2026).
+> https://doi.org/10.64898/2026.10.02.756220
+>
+> Please consult the preprint's current author list when citing the article.
+> The authorship of this software is documented separately in `CITATION.cff`.
 
 This repository contains a mass-action model of a fluorogenic haloalkane
 dehalogenase assay — including the covalent alkyl–enzyme intermediate, a
@@ -26,16 +28,19 @@ experimental data files are required, and nothing here needs new measurements.
 
 ## Citing
 
-Please cite both the article above and this software. `CITATION.cff` carries the
-metadata; the archived release has its own DOI, which is the one to use for the
-code.
+Please cite the [research preprint](https://doi.org/10.64898/2026.10.02.756220)
+**and** the software when using both. `CITATION.cff` describes the software, not
+the preprint. After the first GitHub release is archived by Zenodo, the software
+will have a separate version-specific DOI; cite that DOI for exact reproducibility.
+No software DOI has been assigned in this source tree.
 
 ## Requirements
 
-Python 3.10 or later with NumPy, SciPy and Matplotlib:
+Python **3.11 or later** with NumPy, SciPy and Matplotlib (the pinned
+dependencies are not compatible with Python 3.10):
 
 ```
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 The pinned versions in `requirements.txt` are the ones used to produce
@@ -45,7 +50,7 @@ them.
 ## Running
 
 ```
-python3 run_all.py
+python run_all.py
 ```
 
 Runs every analysis in order, writes `results.txt` with the full console output,
@@ -53,8 +58,9 @@ and produces `fig_degeneracy.pdf` and `fig_degeneracy.png`. Takes about three
 minutes. Individual scripts can also be run on their own.
 
 A reference copy of `results.txt` is committed, so a fresh run can be diffed
-against it. Random seeds are fixed and the tables reproduce exactly; the last
-digit of a bootstrap statistic may differ across BLAS builds.
+against it. Random seeds are fixed and the statistical tables should
+reproduce closely; fitted estimates and the last digit of Monte Carlo
+summaries can differ across scientific stack builds.
 
 ## Which script produces what
 
@@ -69,15 +75,18 @@ digit of a bootstrap statistic may differ across BLAS builds.
 ## Implementation notes
 
 **Integration.** `solve_ivp` with LSODA, `rtol=1e-10`, `atol=1e-14`. The two
-conservation laws are checked along every trajectory and hold to a relative
-error below `3e-15`; `hld_model.invariant_errors` computes them and is the
-recommended solver diagnostic for schemes with sequestering complexes.
+conservation laws are checked along every trajectory; for the supplied
+reference run, the reported relative error is below `3e-15`;
+`hld_model.invariant_errors` computes them and is the recommended
+solver diagnostic for schemes with sequestering complexes.
 
-**Elementary constants.** These are not identifiable from steady-state data.
+**Elementary constants.** The individual elementary rate constants cannot
+be uniquely recovered from the aggregate steady-state rate-law parameters alone.
 `from_aggregates` constructs a set consistent with given `Km`, `kcat` and
 `KSI_app` for a chosen `gamma = 1 + k2/k3 + k2/k4`, with `k1` and `km5` fixed at
-plausible values. The reported results do not depend on that choice: the
-scenarios `gamma=1` and `gamma=3` give identical steady-state rates.
+plausible values. The steady-state parameters are matched across the examined
+scenarios. The `gamma=1` case is a finite-rate approximation to the limiting case
+`gamma → 1`, not an exact equality.
 
 Note the distinction the module enforces. `Params.KSI` is the **apparent**
 inhibition constant that appears in the fitted rate law, and `Params.KSI_true`
@@ -102,6 +111,31 @@ compared.
 `exp(sd(log theta)) - 1`, comparable with a relative standard error and the
 right scale for ratio parameters.
 
+## Reproducibility and scope
+
+The repository uses reported **aggregate kinetic parameters**, not underlying
+experimental time-series. Identifiability replicates and noise are **synthetic**.
+It reproduces the accompanying numerical analysis; it does **not** independently
+reanalyse the complete experimental dataset or validate the experimental claims.
+See [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md).
+
+Run the lightweight automated model checks with:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs these checks on changes. Full output generation can also
+be triggered manually from the repository's Actions tab.
+
+## Contributing and research integrity
+
+Contributions are welcome subject to [`CONTRIBUTING.md`](CONTRIBUTING.md),
+and the reported scope and model assumptions must be preserved in any derived
+research claims. See [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md),
+[`SECURITY.md`](SECURITY.md), and [`CHANGELOG.md`](CHANGELOG.md).
+
 ## License
 
-MIT — see `LICENSE`.
+MIT — see `LICENSE`. The research preprint has its own rights and is not
+relicensed by the software license.
