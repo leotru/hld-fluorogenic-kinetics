@@ -13,7 +13,8 @@ authors:
     affiliation: "INSA Lyon, Université Lyon 1, CNRS UMR5240, Villeurbanne, France"
     orcid: "https://orcid.org/0000-0001-9995-4135"
 license: MIT
-version: "1.0.0"
+version: "v2026.11.21"
+date-released: 2026-11-21
 keywords:
   - enzyme kinetics
   - haloalkane dehalogenase
