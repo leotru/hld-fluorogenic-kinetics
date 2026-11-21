@@ -1,5 +1,9 @@
 # Kinetic model and parameter identifiability for fluorogenic dehalogenase assays
 
+[![CI](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/leotru/hld-fluorogenic-kinetics/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24424426.svg)](https://doi.org/10.5281/zenodo.24424426)
+
 Code accompanying the Supporting Information section *Kinetic model, assay design
 and parameter identifiability* of:
 
