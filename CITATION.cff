@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the article it accompanies."
+title: "Kinetic model, assay design and parameter identifiability for fluorogenic haloalkane dehalogenase assays"
+abstract: >-
+  Mass-action model of a fluorogenic haloalkane dehalogenase assay including the
+  covalent alkyl-enzyme intermediate, a dead-end inhibitory complex and
+  spontaneous hydrolysis, together with the numerical analyses reported in the
+  Supporting Information of Mion et al.: validity of the quasi-steady-state
+  reduction, substrate depletion within the initial-rate window, and
+  identifiability of the fitted steady-state parameters under the concentration
+  design used.
+type: software
+authors:
+  - family-names: "Trujillo"
+    given-names: "Leonardo"
+    affiliation: "INSA Lyon, Université Lyon 1, CNRS UMR5240, Villeurbanne, France"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # <- à compléter
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-21"
+repository-code: "https://github.com/USERNAME/hld-fluorogenic-kinetics"
+keywords:
+  - enzyme kinetics
+  - haloalkane dehalogenase
+  - fluorogenic substrate
+  - substrate inhibition
+  - structural identifiability
+  - quasi-steady-state approximation
+preferred-citation:
+  type: article
+  title: "Coumarin-based blue excitable probe for functional screening of dehalogenase activity"
+  year: 2026
+  doi: "10.64898/2026.10.02.756220"
+  authors:
+    - family-names: "Mion"
+      given-names: "Sonia"
+    - family-names: "Mallet"
+      given-names: "Marnie"
+    - family-names: "Louis"
+      given-names: "Yoann"
+    - family-names: "Fontanay"
+      given-names: "Stéphane"
+    - family-names: "Ruaudel"
+      given-names: "Florence"
+    - family-names: "Trujillo"
+      given-names: "Leonardo"
+    - family-names: "Bastian"
+      given-names: "Fabiola"
+    - family-names: "Jacolot"
+      given-names: "Maïwenn"
+    - family-names: "Popowycz"
+      given-names: "Florence"
+    - family-names: "Oger"
+      given-names: "Philippe M."

@@ -1,0 +1,29 @@
+{
+  "upload_type": "software",
+  "title": "Kinetic model, assay design and parameter identifiability for fluorogenic haloalkane dehalogenase assays",
+  "description": "<p>Mass-action model of a fluorogenic haloalkane dehalogenase assay including the covalent alkyl-enzyme intermediate, a dead-end inhibitory complex and spontaneous hydrolysis, together with the numerical analyses reported in the Supporting Information of Mion et al.</p><p>The code reproduces: the validity check of the quasi-steady-state reduction against the full mass-action system; the relation between the fitted steady-state constants and the elementary rate constants; the substrate-depletion calculation for the initial-rate window; and the identifiability analysis of the fitted parameters under the concentration design used, including the proposed reparametrisation.</p><p>Running <code>run_all.py</code> regenerates every table and the figure of that section.</p>",
+  "creators": [
+    {
+      "name": "Trujillo, Leonardo",
+      "affiliation": "INSA Lyon, Universite Lyon 1, CNRS UMR5240, Villeurbanne, France"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "enzyme kinetics",
+    "haloalkane dehalogenase",
+    "fluorogenic substrate",
+    "substrate inhibition",
+    "structural identifiability",
+    "quasi-steady-state approximation",
+    "experimental design"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.64898/2026.10.02.756220",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    }
+  ]
+}

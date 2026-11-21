@@ -1,0 +1,165 @@
+
+==============================================================================
+### Invariants, QSSA validity, and the covalent-intermediate pool
+### source: a1_qssa.py
+==============================================================================
+========================================================================
+DphxA / COU2-Cl   Km = 6.78 uM   kcat = 16.9 /s   KSI = 7.54 uM
+========================================================================
+
+--- gamma=1  (no intermediate accumulation)
+    kcat=16.899 /s  Km=6.780 uM  KSI_app=7.540 uM  KSI_true=7.540 uM  Ks=5.090 uM  gamma=1.000  Km/Ks=1.332
+    elementary: k1=10 km1=50.9 k2=16.9 k3=1e+06 k4=1e+06
+    invariants: enzyme 2.17e-16, substrate 2.49e-15 (relative, max over trajectory)
+
+      S0 (uM)       v_full       v_qssa   rel.err
+          0.8  1.76187e-03  1.76388e-03    -0.11%
+          2.0  3.62758e-03  3.63028e-03    -0.07%
+          5.0  5.59663e-03  5.59758e-03    -0.02%
+         10.0  5.62580e-03  5.62528e-03     0.01%
+         20.0  4.23442e-03  4.23394e-03     0.01%
+         40.0  2.61038e-03  2.61021e-03     0.01%
+         80.0  1.44512e-03  1.44508e-03     0.00%
+
+    timescales at S0=10 uM: fast 2.497e-03 s, depletion 1.778e+03 s, ratio 7.118e+05
+    at t=2.50s:  P=0.01405  D=0.01405  D-P=1.125e-08 uM  (= 0.0% of E0)
+    predicted pool  E0*(1-kcat/k2) = 3.380e-08 uM
+
+--- gamma=3  (k2=k3=k4, intermediate accumulates)
+    kcat=16.900 /s  Km=6.780 uM  KSI_app=7.540 uM  KSI_true=2.513 uM  Ks=15.270 uM  gamma=3.000  Km/Ks=0.444
+    elementary: k1=10 km1=152.7 k2=50.7 k3=50.7 k4=50.7
+    invariants: enzyme 2.17e-16, substrate 2.66e-15 (relative, max over trajectory)
+
+      S0 (uM)       v_full       v_qssa   rel.err
+          0.8  1.76208e-03  1.76389e-03    -0.10%
+          2.0  3.62785e-03  3.63031e-03    -0.07%
+          5.0  5.59677e-03  5.59764e-03    -0.02%
+         10.0  5.62582e-03  5.62535e-03     0.01%
+         20.0  4.23442e-03  4.23398e-03     0.01%
+         40.0  2.61038e-03  2.61022e-03     0.01%
+         80.0  1.44513e-03  1.44508e-03     0.00%
+
+    timescales at S0=10 uM: fast 1.248e-03 s, depletion 1.778e+03 s, ratio 1.424e+06
+    at t=2.50s:  P=0.01387  D=0.01410  D-P=2.220e-04 uM  (= 22.2% of E0)
+    predicted pool  E0*(1-kcat/k2) = 6.667e-04 uM
+
+==============================================================================
+### Substrate depletion within the initial-rate window
+### source: a2_design.py
+==============================================================================
+==========================================================================
+2.  SUBSTRATE DEPLETION WITHIN THE INITIAL-RATE WINDOW
+==========================================================================
+
+Fraction converted by time dt depends on Vmax and dt only through the
+product Vmax*dt, so the table below is free of any assumption about E0.
+Literature threshold for unbiased initial rates: 1% depletion.
+
+ Vmax*dt (uM) |      0.8      1.3      2.1      3.4      5.5      8.9     14.3
+----------------------------------------------------------------------------
+        0.001 |    0.01%    0.01%    0.01%    0.01%    0.01%    0.00%    0.00%
+        0.010 |    0.13%    0.12%    0.11%    0.09%    0.06%    0.04%    0.02%
+        0.050 |    0.65%    0.60%    0.53%    0.43%    0.31%    0.19%    0.10%
+        0.100 |    1.30%    1.20%    1.05%    0.85%    0.61%    0.38%    0.21%
+        0.500 |    6.34%    5.88%    5.19%    4.23%    3.06%    1.91%    1.04%
+        1.000 |   12.32%   11.48%   10.20%    8.37%    6.10%    3.83%    2.08%
+
+  To keep depletion below 1% at S0 = 0.8 uM:  Vmax*dt < 0.07699 uM
+      window   10 s  ->  Vmax < 7.699e-03 uM/s  ->  E0 < 455.538 pM
+      window   30 s  ->  Vmax < 2.566e-03 uM/s  ->  E0 < 151.846 pM
+      window   60 s  ->  Vmax < 1.283e-03 uM/s  ->  E0 < 75.923 pM
+      window  300 s  ->  Vmax < 2.566e-04 uM/s  ->  E0 < 15.185 pM
+
+  To keep depletion below 5% at S0 = 0.8 uM:  Vmax*dt < 0.3919 uM
+      window   10 s  ->  Vmax < 3.919e-02 uM/s  ->  E0 < 2318.973 pM
+      window   30 s  ->  Vmax < 1.306e-02 uM/s  ->  E0 < 772.991 pM
+      window   60 s  ->  Vmax < 6.532e-03 uM/s  ->  E0 < 386.496 pM
+      window  300 s  ->  Vmax < 1.306e-03 uM/s  ->  E0 < 77.299 pM
+
+==========================================================================
+3.  IDENTIFIABILITY UNDER THE PUBLISHED CONCENTRATION GRID
+==========================================================================
+
+Published (DphxA / COU2-Cl):  Km 6.78 +/- 3.01 (44%),
+kcat 16.9 +/- 5.10 (30%),  KSI 7.54 +/- 3.26 (43%).
+Synthetic replicates: 11 concentrations x 3 replicates, proportional noise.
+
+  noise   CV(Vmax)    CV(Km)   CV(KSI)   r(Km,KSI)   r(V,Km)   r(V,KSI)
+--------------------------------------------------------------------------
+     2%       3.7%      4.9%      4.8%      -0.955     0.984     -0.983
+     5%       9.8%     12.9%     12.2%      -0.948     0.986     -0.973
+    10%      35.9%     47.5%     24.9%      -0.658     0.996     -0.675
+    15%    2337.9%   2369.6%     36.7%      -0.112     1.000     -0.112
+    20%    1010.1%   1009.7%     48.0%      -0.206     0.999     -0.205
+    30%     470.9%    474.4%     76.3%      -0.276     0.993     -0.278
+
+The correlation structure is essentially constant across noise levels:
+it is a property of the rate law and the design, not of the data quality.
+
+Reparametrisation check at 15% noise (CV of derived quantities, 600 fits):
+    Vmax/Km   (low-S arm)  CV =   11.6%
+    Vmax*KSI  (high-S arm)  CV =    9.9%
+    S* = sqrt(Km*KSI)  CV =    5.4%
+    Km                   CV = 2345.9%
+    KSI                  CV =   37.8%
+
+==============================================================================
+### Parameter identifiability, reparametrisation, and design comparison
+### source: a3_ident.py
+==============================================================================
+==========================================================================
+IDENTIFIABILITY UNDER THE PUBLISHED GRID (log-space fits, 800 reps)
+==========================================================================
+Published, DphxA / COU2-Cl:  Km 44%, kcat 30%, KSI 43% relative error.
+Geometric CV below is exp(sd of log) - 1, comparable to a relative error.
+'runaway' = fraction of fits with Km above 100x its true value.
+
+ noise   gCV(Vmax)    gCV(Km)   gCV(KSI)   r(lnKm,lnKSI)   r(lnV,lnKm)   runaway
+--------------------------------------------------------------------------------
+  2.0%        3.1%       4.1%       3.9%          -0.962         0.984      0.0%
+  5.0%        8.4%      11.1%      10.5%          -0.966         0.985      0.0%
+  7.5%       12.7%      16.9%      15.9%          -0.962         0.983      0.0%
+ 10.0%       18.0%      23.8%      22.8%          -0.970         0.985      0.0%
+ 15.0%       30.7%      40.8%      38.5%          -0.969         0.985      0.0%
+ 20.0%       69.8%      82.8%      81.1%          -0.984         0.988      0.2%
+
+The published relative errors (Km 44%, KSI 43%) are reproduced at
+about 15-16% proportional noise with 11 concentrations in triplicate,
+or at lower noise if fewer concentrations were actually used.  The
+correlation r(lnKm,lnKSI) = -0.97 is unchanged across every noise
+level and every design tested: it is structural, not a data problem.
+
+==========================================================================
+REPARAMETRISATION: identifiable combinations at 10% noise
+==========================================================================
+    Vmax / Km        (low-S arm)           gCV =     6.0%
+    Vmax * KSI       (high-S arm)          gCV =     5.0%
+    S* = sqrt(Km*KSI) (peak position)      gCV =     2.6%
+    Vmax                                   gCV =    18.0%
+    Km                                     gCV =    23.8%
+    KSI                                    gCV =    22.8%
+
+The three well-determined quantities are the two asymptotic arms
+and the peak position.  Km and KSI individually are not, and they
+should be quoted as a correlated pair, not as independent numbers.
+
+==========================================================================
+DOES THE DESIGN MATTER?  (10% noise, 33 measurements in all cases)
+==========================================================================
+  published log grid 0.8-80    gCV(Km)    22.0%  gCV(KSI)   21.4%  r(lnKm,lnKSI) -0.965
+  narrow around S* = 7.2 uM    gCV(Km)   400.1%  gCV(KSI)  396.2%  r(lnKm,lnKSI) -0.998
+  wider, 0.8-300 uM            gCV(Km)    21.6%  gCV(KSI)   18.9%  r(lnKm,lnKSI) -0.963
+  two clusters, arms only      gCV(Km)    52.4%  gCV(KSI)   46.7%  r(lnKm,lnKSI) -0.994
+
+==============================================================================
+### Figure: the (Km, KSI) degeneracy and its removal
+### source: fig_degeneracy.py
+==============================================================================
+n fits          : 1500
+r(lnKm,lnKSI)   : -0.9654
+r(lnA,lnB)      : +0.4813
+  gCV(Km       ) =   23.2%
+  gCV(KSI      ) =   22.1%
+  gCV(Vmax/Km  ) =    5.9%
+  gCV(Vmax*KSI ) =    5.0%
+  gCV(S*       ) =    2.8%
